@@ -1,0 +1,21 @@
+<app-order-table
+  [rowsArray]="rows"
+  (remove)="removeRow($event)"></app-order-table>
+
+<h2>Ajout (<input type="checkbox" [(ngModel)]="manualMode"> en mode manuel) </h2>
+
+<app-order-manual-form *ngIf="manualMode"
+                       (add)="addRow($event)">
+
+</app-order-manual-form>
+
+<ng-container *ngIf="books$ | async as books; else loading">
+  <app-order-catalog-form *ngIf="!manualMode"
+                          [catalog]="books"
+                          (add)="addRow($event)">
+
+  </app-order-catalog-form>
+</ng-container>
+<ng-template #loading>
+  <p>Chargement en cours...</p>
+</ng-template>

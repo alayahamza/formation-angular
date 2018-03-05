@@ -1,0 +1,19 @@
+<form (ngSubmit)="emitAdd()" #formInfo="ngForm">
+  <label>Titre
+    <input type="text" name="title"
+           [(ngModel)]="data.title" required>
+  </label>
+  <label>Auteur
+    <input type="text" name="author"
+           [(ngModel)]="data.author" required>
+  </label>
+  <label>Prix
+    <input type="number" name="price"
+           [(ngModel)]="data.price" required>
+  </label>
+  <label>Quantité
+    <input type="number" name="quantity"
+           [(ngModel)]="data.quantity" required>
+  </label>
+  <input type="submit" value="Ajouter" [disabled]="formInfo.invalid">
+</form>
